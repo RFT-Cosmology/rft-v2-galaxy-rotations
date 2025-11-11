@@ -1,0 +1,82 @@
+% Results Section
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Predictive Headline and Paired Tests}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/fig1_overview.pdf}
+    \caption{Predictive comparison on the blind TEST cohort (\testCohortSize galaxies). Bars show pass@20\% with Wilson 95\% confidence intervals; all models use $k=0$ (no per-galaxy tuning).}
+    \label{fig:headline}
+\end{figure}
+
+Figure~\ref{fig:headline} summarises the predictive (k=0) comparison.  RFT v2 passes the 20\% RMS test in \rftPassTwentyFrac galaxies (\rftPassTwentyPct; Wilson CI $[\rftWilsonLow,\rftWilsonHigh]$).  The global NFW baseline reaches \nfwPassTwentyFrac\ (\nfwPassTwentyPct; CI $[\nfwWilsonLow,\nfwWilsonHigh]$) and MOND reaches \mondPassTwentyFrac\ (\mondPassTwentyPct; CI $[\mondWilsonLow,\mondWilsonHigh]$).  The net advantage versus NFW is \rftVsNfwDeltaPP~percentage points, while the advantage versus MOND is \rftVsMondDeltaPP~points.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/fig2_mcnemar.pdf}
+    \caption{Paired McNemar analysis for RFT v2 vs NFW$_{\text{global}}$.  Only six galaxies are discordant (\rftVsNfwRftOnly\ RFT-only wins vs \rftVsNfwCompOnly\ NFW-only wins), leading to $p=\mcnemarPvsNFW$ (not significant).}
+    \label{fig:paired}
+\end{figure}
+
+The paired McNemar test (Figure~\ref{fig:paired}) shows that RFT and NFW both succeed on \rftVsNfwBothPass\ galaxies and both fail on \rftVsNfwBothFail\ galaxies.  Only six systems are discordant: \rftVsNfwRftOnly\ where RFT passes but NFW fails, and \rftVsNfwCompOnly\ where the opposite happens.  Consequently, $p=\mcnemarPvsNFW$ and we claim only competitiveness rather than superiority.  Against MOND the discordant set is 16 vs 2, yielding $p=\mcnemarPvsMOND$ and establishing a statistically significant advantage.
+
+\subsection{Parameter Budget and Fairness}
+
+\begin{table}[t]
+\input{tables/t1_param_budget.tex}
+\end{table}
+
+Table~\ref{tab:param_budget} makes the parameter budget explicit: all predictive comparisons fix $k=0$, RFT v2 uses six global parameters, the global NFW halo uses two, and MOND uses one.  The per-galaxy NFW fit is reported only as a descriptive ceiling (68 total parameters on TEST) and is not used in the primary comparison.  This framing prevents the apples-to-oranges trap that initially overstated RFT's advantage.
+
+\subsection{LSB/HSB Mechanism Check}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/fig3_lsb_hsb.pdf}
+    \caption{LSB vs HSB split (threshold $v_{\max}=120$ km/s).  RFT v2 is the only k=0 model with non-zero LSB passes; HSB performance is parity with NFW.}
+    \label{fig:lsb}
+\end{figure}
+
+\begin{table}[t]
+\input{tables/t2_lsb_hsb.tex}
+\end{table}
+
+The acceleration-gated tail is designed to activate where baryonic gravity is weak.  Figure~\ref{fig:lsb} and Table~\ref{tab:lsbhsb} confirm this behavior: RFT is the sole k=0 model with LSB successes, while both NFW and MOND remain at zero in that cohort.  In the HSB cohort all models cluster near parity, demonstrating that the tail does not degrade performance where baryons already dominate.
+
+\subsection{Robustness and Ablations}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/fig4_stability.pdf}
+    \caption{$\pm$10\% perturbations to each frozen parameter.  All sweeps remain within numerical noise of the baseline \rftPassTwentyPct\ pass rate.}
+    \label{fig:stability}
+\end{figure}
+
+Figure~\ref{fig:stability} (supported by \texttt{scripts/generate\_stability\_analysis.py}) shows that perturbing any of the six parameters by $\pm$10\% leaves the pass rate unchanged within rounding.  This guards against a narrow optimum and suggests that the blind-test performance is not a fragile artefact of the selected hyperparameters.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/fig6_ablations.pdf}
+    \caption{Ablation study.  Removing the acceleration-gated tail collapses performance; gating/shaping terms determine where the tail contributes.}
+    \label{fig:ablations}
+\end{figure}
+
+\begin{table}[t]
+\input{tables/t3_ablations.tex}
+\end{table}
+
+The ablation study (Figure~\ref{fig:ablations} and Table~\ref{tab:ablations}) isolates the causal contribution of each component.  Zeroing the tail wipes out most of the predictive power, while keeping the tail but removing the acceleration or radial gate produces moderate degradations.  These deltas establish that the tail is the critical mechanism and that the gates control when and where it contributes.
+
+\subsection{Representative Rotation Curves}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figs/fig5_rotation_gallery.pdf}
+    \caption{Representative TEST galaxies: two RFT wins, two both-pass cases, and two near-misses where NFW passes and RFT fails.  Each panel shows observed data (with $\sigma$), the three k=0 predictions, and fractional residuals.}
+    \label{fig:gallery}
+\end{figure*}
+
+Figure~\ref{fig:gallery} provides qualitative context.  RFT's wins correspond to classic LSB disks where the acceleration gate engages and lifts the outer curve; the both-pass cases highlight parity on HSB systems; and the near-misses illustrate where the identity kernel plus tail is insufficient (e.g., bulge-dominated or dynamically hot disks).  These examples, combined with the fairness tables and robustness sweeps, define the envelope of current performance.

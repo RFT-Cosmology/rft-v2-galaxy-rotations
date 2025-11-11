@@ -1,0 +1,20 @@
+%\begin{table}[t]
+\centering
+\caption{Dataset Composition (SPARC-99 Derived)}
+\label{tab:dataset}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Split} & \textbf{n} & \textbf{Description} \\
+\midrule
+TRAIN & 65 & Calibration cohort \\
+TEST & 34 & Blind validation (reported results) \\
+\midrule
+TEST LSB & 15 & $v_{\rm max} < 120$ km/s \\
+TEST HSB & 19 & $v_{\rm max} \geq 120$ km/s \\
+\bottomrule
+\end{tabular}
+\vspace{2mm}
+\raggedright
+\footnotesize
+TRAIN/TEST manifests: \texttt{cases/SP99-TRAIN.manifest.txt}, \texttt{cases/SP99-TEST.manifest.txt}
+\end{table}

@@ -1,0 +1,28 @@
+% Discussion Section
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Main Findings}
+
+The frozen RFT v2 configuration delivers \rftPassTwentyPct\ pass@20\% on the blind TEST cohort while using only six global parameters and no per-galaxy tuning.  This positions RFT as (i) \emph{competitive} with the global NFW baseline---RFT leads by \rftVsNfwDeltaPP~percentage points but the paired McNemar test ($p=\mcnemarPvsNFW$) and overlapping Wilson intervals indicate that the current cohort is underpowered for a decisive claim---and (ii) \emph{significantly better} than MOND under the same predictive budget ($p=\mcnemarPvsMOND$).  These statements rest entirely on the paired fairness pack (Figures~\ref{fig:headline}--\ref{fig:paired}) and avoid comparisons to descriptive fits with extra degrees of freedom.
+
+\subsection{Mechanistic Validation via LSBs}
+
+Both the fairness table (Table~\ref{tab:lsbhsb}) and the LSB/HSB figure (Figure~\ref{fig:lsb}) show that RFT is the only k=0 model with non-zero LSB success while maintaining parity on HSB systems.  This behaviour is precisely what the acceleration gate in Equation~\ref{eq:tail} is designed to produce: once $g_b \ll g_*$ the tail activates and supplies the missing acceleration, whereas high-acceleration disks keep the gate near zero.  The qualitative gallery (Figure~\ref{fig:gallery}) reinforces this intuition by displaying LSB wins, HSB ties, and bulge-heavy failures side by side.
+
+\subsection{Statistical Power and the Need for Larger Cohorts}
+
+The predictive difference versus NFW relies on only six discordant galaxies (\rftVsNfwRftOnly\ RFT-only wins and \rftVsNfwCompOnly\ NFW-only wins).  With such a small discordant set the exact McNemar $p$ cannot dip below the 0.05 threshold unless multiple new galaxies are added or the delta widens dramatically.  Expanding the blind cohort toward $\sim$100 galaxies (e.g., SPARC-175 or a fresh low-$z$ compilation) is therefore the most direct path to resolving whether the modest advantage persists at scale.  Until then, the appropriate claim is competitiveness, not superiority.
+
+\subsection{Failure Modes and Limitations}
+
+The remaining \rftFailCount\ galaxies stay above the 20\% RMS line.  Qualitatively these are dominated by (i) dynamically hot or bulge-heavy systems where the identity kernel cannot smooth non-circular motions, (ii) disks with substantial warps/asymmetries that violate the thin-disk assumption, and (iii) galaxies with poorly constrained baryonic decompositions.  These failure modes suggest concrete extensions (adaptive kernels, dispersion terms, descriptor-driven gates) rather than undermining the entire approach.
+
+\subsection{Predictive vs Descriptive Framing}
+
+Per-galaxy NFW fits (68 parameters on TEST) unsurprisingly reach $\approx$80\% pass@20\%, but they conflate descriptive flexibility with predictive power.  Our methodology keeps those results in the supplement for context and compares only k=0 models in the main text.  This mirrors the intended scientific question: \emph{can a parameter-efficient model generalize without touching the test galaxies?}  RFT provides one such candidate, and the fairness pack plus reproducibility gates ensure that any future solver can be plugged into the same pipeline for an apples-to-apples comparison.
+
+\subsection{Methodological Transparency}
+
+Earlier drafts relied on unpaired two-proportion tests and accidentally compared a k=0 solver to a k=2 baseline, overstating the advantage.  The current pipeline fixes both issues: \texttt{analysis/fairness/compute\_paired\_stats.py} generates the McNemar inputs, \texttt{scripts/generate\_fairness\_pack.py} locks the head-to-head arrays, and \texttt{scripts/emit\_tex\_numbers.py} ensures that every headline number in the prose originates from the hash-locked \texttt{paper/build/final\_numbers.json}.  Combined with the new numbers gate in CI, this prevents accidental drift between the frozen JSON and the manuscript.

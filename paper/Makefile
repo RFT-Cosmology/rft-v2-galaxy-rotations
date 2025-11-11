@@ -57,14 +57,20 @@ clean:
 # Prepare arXiv submission tarball
 arxiv: figures tables
 	@echo "===== Preparing arXiv submission ====="
-	mkdir -p dist/arxiv
+	mkdir -p dist/arxiv/figs
+	mkdir -p dist/arxiv/tables
+	mkdir -p dist/arxiv/sections
+	mkdir -p dist/arxiv/build
 	cp main.tex dist/arxiv/
-	cp -r sections dist/arxiv/
-	cp -r figs/*.pdf dist/arxiv/figs/
-	cp -r tables/*.tex dist/arxiv/tables/
+	cp -r sections/*.tex dist/arxiv/sections/
+	cp figs/*.pdf dist/arxiv/figs/
+	cp tables/*.tex dist/arxiv/tables/
+	cp build/numbers.tex dist/arxiv/build/
 	cp refs.bib dist/arxiv/
+	cp ../LICENSE dist/arxiv/
 	cd dist/arxiv && tar czf ../rft-v2-arxiv.tar.gz *
 	@echo "✅ arXiv tarball: dist/rft-v2-arxiv.tar.gz"
+	@echo "✅ Contents: main.tex, sections/, figs/, tables/, build/, refs.bib, LICENSE"
 
 # Run reproducibility checks
 verify:

@@ -41,6 +41,9 @@ jobs:
           test -f app/static/data/v2_ablations.json || (echo "❌ Missing v2_ablations.json" && exit 1)
           echo "✅ All frozen data files present"
 
+      - name: Verify figure hashes (Gate P2)
+        run: python scripts/verify_figure_hashes.py
+
   lint:
     runs-on: ubuntu-latest
     steps:
