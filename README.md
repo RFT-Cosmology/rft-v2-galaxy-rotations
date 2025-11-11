@@ -1,6 +1,6 @@
 # RFT v2 — Galaxy Rotation Curves (Predictive, k=0)
 
-[![CI](https://github.com/rft-cosmology/rft-v2-galaxy-rotations/workflows/CI/badge.svg)](https://github.com/rft-cosmology/rft-v2-galaxy-rotations/actions)
+[![CI](https://github.com/RFT-Cosmology/rft-v2-galaxy-rotations/workflows/CI/badge.svg)](https://github.com/RFT-Cosmology/rft-v2-galaxy-rotations/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 
