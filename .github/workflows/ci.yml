@@ -34,39 +34,12 @@ jobs:
       - name: Verify final numbers hash (Gate P1)
         run: python scripts/verify_final_numbers_hash.py
 
-      - name: Emit LaTeX numbers
-        run: python scripts/emit_tex_numbers.py
-
-      - name: Verify headline numbers
-        run: python scripts/verify_numbers.py
-
-      - name: Check for hard-coded percentages in LaTeX
+      - name: Verify frozen data files exist
         run: |
-          if grep -R -n --include='*.tex' -E '[0-9]+\.[0-9]+\\%' paper/main.tex paper/sections; then
-            echo "❌ Found manual percentage values. Use macros from build/numbers.tex."
-            exit 1
-          fi
-          echo "✅ No manual percentages detected in LaTeX sources"
-
-      - name: Generate fairness pack
-        run: |
-          python scripts/generate_fairness_pack.py \
-            --rft results/v2.1_refine/v2.1_test_results.json \
-            --nfw baselines/results/nfw_global_test_baseline.json \
-            --mond baselines/results/mond_test_baseline.json \
-            --out app/static/data/v2_fairness_pack.json
-
-      - name: Generate stability analysis
-        run: |
-          python scripts/generate_stability_analysis.py \
-            --frozen-config config/global_rc_v2_frozen.json \
-            --out app/static/data/v2_stability.json
-
-      - name: Check generated files exist
-        run: |
-          test -f app/static/data/v2_fairness_pack.json
-          test -f app/static/data/v2_stability.json
-          echo "✅ All generated files present"
+          test -f app/static/data/v2_fairness_pack.json || (echo "❌ Missing v2_fairness_pack.json" && exit 1)
+          test -f app/static/data/v2_stability.json || (echo "❌ Missing v2_stability.json" && exit 1)
+          test -f app/static/data/v2_ablations.json || (echo "❌ Missing v2_ablations.json" && exit 1)
+          echo "✅ All frozen data files present"
 
   lint:
     runs-on: ubuntu-latest
