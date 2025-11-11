@@ -1,0 +1,35 @@
+{
+  "distance_mpc": 15.2,
+  "name": "D512-2",
+  "notes": "SPARC Rotmod ingest from D512-2_rotmod.dat",
+  "r_kpc": [
+    0.96,
+    1.92,
+    2.88,
+    3.83
+  ],
+  "sigma_v_kms": [
+    2.71,
+    2.71,
+    4.19,
+    5.98
+  ],
+  "v_baryon_disk_kms": [
+    14.85,
+    21.2,
+    20.56,
+    20.08
+  ],
+  "v_baryon_gas_kms": [
+    4.08,
+    6.24,
+    7.45,
+    8.09
+  ],
+  "v_obs_kms": [
+    22.9,
+    33.5,
+    37.2,
+    35.9
+  ]
+}

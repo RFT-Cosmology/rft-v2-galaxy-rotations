@@ -1,0 +1,247 @@
+% Methods Section for RFT v2 Galaxy Rotation Curves Paper
+
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Data and Cohort Selection}
+
+We use a SPARC-derived dataset~\cite{Lelli2016} of 99 disk galaxies with high-quality rotation curve measurements. The cohort was split into TRAIN ($n=65$) and TEST ($n=34$) subsets \emph{a priori}, with TEST galaxies held blind during model calibration. All results reported in this work use the TEST cohort exclusively.
+
+Galaxy selection criteria:
+\begin{itemize}
+    \item High-quality photometry (Spitzer 3.6 $\mu$m)
+    \item Well-sampled rotation curves (minimum 10 independent radial bins)
+    \item Reliable distance estimates
+    \item Velocity uncertainties $< 20\%$
+\end{itemize}
+
+TRAIN and TEST manifests are provided as frozen artifacts (\texttt{cases/SP99-TRAIN.manifest.txt}, \texttt{cases/SP99-TEST.manifest.txt}) to ensure reproducibility.
+
+\subsection{Performance Metric}
+
+A galaxy is considered to \textbf{pass@$X$\%} if the root-mean-square (RMS) percentage error between model and observed rotation velocities is $\leq X\%$:
+
+\begin{equation}
+    \text{RMS}\% = 100\% \times \sqrt{\frac{1}{N} \sum_{i=1}^{N} \left( \frac{v_{\text{model},i} - v_{\text{obs},i}}{v_{\text{obs},i}} \right)^2}
+\end{equation}
+
+where $N$ is the number of radial bins, $v_{\text{model},i}$ is the predicted circular velocity at radius $r_i$, and $v_{\text{obs},i}$ is the observed velocity with uncertainty $\sigma_i$.
+
+We report two thresholds:
+\begin{itemize}
+    \item \textbf{Pass@20\%} (primary): Tolerates modest ($\leq 20\%$) systematic deviations
+    \item \textbf{Pass@10\%} (secondary): Stricter criterion for high-precision fits
+\end{itemize}
+
+The 20\% threshold is defensible for heterogeneous disk galaxies with varied morphologies, inclinations, and distance uncertainties~\cite{McGaugh2016}. We also report median RMS\% and Wilson 95\% confidence intervals on pass rates.
+
+\subsection{RFT v2 Model}
+
+\subsubsection{Tail Formula}
+
+The RFT v2 geometry-only solver applies an acceleration-gated tail term to the Newtonian baryonic rotation curve $v_{\text{bar}}(r)$:
+
+\begin{equation}
+    v^2_{\text{RFT}}(r) = v^2_{\text{bar}}(r) + r \cdot g_{\text{tail}}(r)
+    \label{eq:rft_total}
+\end{equation}
+
+where the tail acceleration is:
+
+\begin{equation}
+    g_{\text{tail}}(r) = A_0 \left( \frac{r_{\text{geo}}}{r} \right)^\alpha \cdot \frac{1}{1 + \left( \frac{g_b}{g_*} \right)^\gamma} \cdot \left[ 1 - \exp\left( -\left( \frac{r}{r_{\text{turn}}} \right)^p \right) \right]
+    \label{eq:tail}
+\end{equation}
+
+\textbf{Components}:
+\begin{itemize}
+    \item $A_0$ [km$^2$ s$^{-2}$ kpc$^{-1}$]: Amplitude
+    \item $\alpha$ [-]: Power-law slope (controls how tail scales with radius)
+    \item $r_{\text{geo}}$ [kpc]: Geometric scale (from RFT resonance framework; here taken as galaxy-specific from baryonic mass distribution)
+    \item $g_b$ [km$^2$ s$^{-2}$ kpc$^{-1}$]: Baryonic acceleration at radius $r$
+    \item $g_*$ [km$^2$ s$^{-2}$ kpc$^{-1}$]: Acceleration threshold (gate activates when $g_b \ll g_*$)
+    \item $\gamma$ [-]: Gate steepness
+    \item $r_{\text{turn}}$ [kpc]: Radial onset scale (suppresses inner disk)
+    \item $p$ [-]: Onset exponent
+\end{itemize}
+
+\textbf{Design intent}: The acceleration gate $\left[1 + (g_b/g_*)^\gamma\right]^{-1}$ activates the tail boost where baryonic gravity is weak ($g_b \ll g_*$), naturally favoring low surface brightness (LSB) galaxies. The radial onset $1 - \exp(-(r/r_{\text{turn}})^p)$ suppresses the tail in the inner disk, allowing outer rotation curve features to dominate.
+
+\textbf{Identity kernel}: We use an identity convolution kernel (no smoothing) to isolate the tail physics without confounding from spatial averaging.
+
+\subsubsection{Frozen Parameters}
+
+All six global parameters were calibrated on the TRAIN cohort ($n=65$) using a bounded grid search with BIC-based selection. The frozen configuration (Table~\ref{tab:params}) was then evaluated once on the blind TEST cohort ($n=34$) with zero per-galaxy tuning ($k=0$):
+
+\begin{table}[h]
+\centering
+\caption{Frozen RFT v2 Parameters (Tag: \texttt{rc-v2-green-20pct}, Commit: \texttt{3428db0f})}
+\label{tab:params_inline}
+\begin{tabular}{llr}
+\toprule
+\textbf{Parameter} & \textbf{Symbol} & \textbf{Value} \\
+\midrule
+Amplitude & $A_0$ & 1000 km$^2$ s$^{-2}$ kpc$^{-1}$ \\
+Tail slope & $\alpha$ & 0.6 \\
+Accel threshold & $g_*$ & 1000 km$^2$ s$^{-2}$ kpc$^{-1}$ \\
+Gate steepness & $\gamma$ & 0.5 \\
+Radial scale & $r_{\text{turn}}$ & 2.0 kpc \\
+Onset exponent & $p$ & 2.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Baseline Models}
+
+\subsubsection{NFW\_global (k=0)}
+
+A Navarro-Frenk-White (NFW) dark matter halo~\cite{Navarro1997} with \emph{two global parameters} shared across all TEST galaxies:
+
+\begin{equation}
+    \rho_{\text{NFW}}(r) = \frac{\rho_s}{\left( \frac{r}{r_s} \right) \left( 1 + \frac{r}{r_s} \right)^2}
+\end{equation}
+
+where $\rho_s$ (density scale) and $r_s$ (scale radius) are fixed globally. This provides a fair $k=0$ comparison (no per-galaxy tuning).
+
+\subsubsection{MOND (k=0)}
+
+Modified Newtonian Dynamics~\cite{Milgrom1983} with the canonical acceleration scale $a_0 = 1.2 \times 10^{-10}$ m s$^{-2}$ (one global parameter):
+
+\begin{equation}
+    v^4_{\text{MOND}} = v^4_{\text{bar}} a_0 r
+\end{equation}
+
+This is the simplest MOND formulation; more sophisticated interpolation functions exist but add free parameters.
+
+\subsubsection{NFW\_fitted (k=2, Reference Only)}
+
+For context, we also report per-galaxy NFW fits with \emph{two parameters per galaxy} ($\rho_s$, $r_s$ fitted individually). These descriptive fits typically clear $\sim$80\% pass@20\% on TEST but require 68 total parameters (34 galaxies $\times$ 2), making them a \textbf{descriptive} rather than predictive baseline. We present them only to clarify the $k=0$ vs $k=2$ paradigm distinction.
+
+\subsection{Training Protocol}
+
+\subsubsection{Grid Search and Selection}
+
+RFT v2 parameters were selected via bounded grid search on TRAIN ($n=65$):
+
+\begin{enumerate}
+    \item \textbf{Grid bounds}: Physically motivated ranges for each parameter (e.g., $A_0 \in [500, 2000]$, $\alpha \in [0.3, 1.0]$)
+    \item \textbf{Selection rule}: Minimize Bayesian Information Criterion (BIC) on TRAIN:
+    \begin{equation}
+        \text{BIC} = N \ln(\text{RSS}/N) + k \ln(N)
+    \end{equation}
+    where RSS is residual sum of squares, $N$ is total data points, $k=6$ (global parameters)
+    \item \textbf{Stop rule}: Pre-registered; no post-hoc tuning after freeze
+    \item \textbf{Freeze}: Best configuration locked via git tag (\texttt{rc-v2-green-20pct}, commit \texttt{3428db0f})
+\end{enumerate}
+
+\subsubsection{Pre-Registration}
+
+Grid bounds, selection criteria, and TEST evaluation protocol were documented in \texttt{RFT\_V2.1\_PREREG.md} before TEST evaluation. This ensures honest reporting and prevents $p$-hacking.
+
+\subsection{Statistical Tests}
+
+\subsubsection{Primary Test: McNemar's Exact (Paired)}
+
+Because the \emph{same 34 TEST galaxies} are evaluated by all models, we use \textbf{McNemar's exact test} to assess pairwise differences in pass/fail outcomes. For two models A and B:
+
+\begin{itemize}
+    \item Let $b$ = number of galaxies where A passes and B fails
+    \item Let $c$ = number of galaxies where B passes and A fails
+\end{itemize}
+
+Under the null hypothesis ($H_0$: marginal probabilities equal), $b$ follows a Binomial($b+c$, 0.5) distribution. The two-sided $p$-value is:
+
+\begin{equation}
+    p = \sum_{k: P(X=k) \leq P(X=b)} P(X=k), \quad X \sim \text{Binomial}(b+c, 0.5)
+\end{equation}
+
+This is the \textbf{correct test for paired binary outcomes} and is reported as the primary statistical result in this work.
+
+\subsubsection{Secondary Test: Two-Proportion $z$-Test (Unpaired)}
+
+For comparison, we also report the unpaired two-proportion $z$-test in the Methods section (not as a primary claim):
+
+\begin{equation}
+    z = \frac{p_1 - p_2}{\sqrt{\hat{p}(1-\hat{p})(1/n_1 + 1/n_2)}}, \quad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}
+\end{equation}
+
+where $p_1$, $p_2$ are observed pass rates and $x_1$, $x_2$ are pass counts. This test \emph{ignores pairing} and is less conservative; we include it for methodological transparency but do not base claims on it.
+
+\subsubsection{Wilson Confidence Intervals}
+
+For binomial proportions (pass rates), we use Wilson score intervals~\cite{Wilson1927} rather than normal approximation, as they are more accurate for small $n$ and near-boundary proportions:
+
+\begin{equation}
+    \text{CI} = \frac{1}{1 + \frac{z^2}{n}} \left( \hat{p} + \frac{z^2}{2n} \pm z \sqrt{\frac{\hat{p}(1-\hat{p})}{n} + \frac{z^2}{4n^2}} \right)
+\end{equation}
+
+where $z=1.96$ for 95\% confidence, $\hat{p}$ is the observed pass rate, and $n$ is the cohort size.
+
+\subsection{Reproducibility Protocol}
+
+All analysis is fully reproducible via a one-click verification script:
+
+\begin{verbatim}
+./RUNME.sh
+\end{verbatim}
+
+This executes:
+\begin{enumerate}
+    \item Baseline consistency audit (Gate 0): Verifies frozen numbers match publication
+    \item Final numbers hash check (Gate P1): Ensures statistical results unchanged
+    \item Fairness pack generation: Computes McNemar tests, Wilson CIs, LSB/HSB splits
+    \item Stability analysis: Runs $\pm$10\% perturbations
+    \item Figure regeneration: Produces all camera-ready plots from frozen JSON
+\end{enumerate}
+
+CI/CD workflows (GitHub Actions) enforce these gates on every commit, preventing accidental number drift. All source code, data manifests, and frozen configurations are available under MIT license at:
+
+\begin{center}
+\url{https://github.com/rft-cosmology/rft-v2-galaxy-rotations}
+\end{center}
+
+SHA256 checksums of all frozen artifacts are provided in \texttt{rft-v2-repro-1.0.SHA256SUMS.txt}.
+
+\subsection{Code-to-Paper Mapping}
+
+For full traceability, we provide a mapping between mathematical expressions and implementation:
+
+\begin{table}[h]
+\centering
+\caption{Code-to-Math Mapping (Reproducibility)}
+\label{tab:code_map}
+\small
+\begin{tabular}{lll}
+\toprule
+\textbf{Paper Symbol} & \textbf{Code Variable} & \textbf{File} \\
+\midrule
+$A_0$ & \texttt{A0\_kms2\_per\_kpc} & \texttt{config/global\_rc\_v2\_frozen.json} \\
+$\alpha$ & \texttt{alpha} & \texttt{config/global\_rc\_v2\_frozen.json} \\
+$g_*$ & \texttt{g\_star\_kms2\_per\_kpc} & \texttt{config/global\_rc\_v2\_frozen.json} \\
+$\gamma$ & \texttt{gamma} & \texttt{config/global\_rc\_v2\_frozen.json} \\
+$r_{\text{turn}}$ & \texttt{r\_turn\_kpc} & \texttt{config/global\_rc\_v2\_frozen.json} \\
+$p$ & \texttt{p} & \texttt{config/global\_rc\_v2\_frozen.json} \\
+Pass@20\% & \texttt{pass\_20\_rate} & \texttt{results/.../test\_results.json} \\
+RMS\% & \texttt{rms\_percent} & \texttt{results/.../test\_results.json} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Exact formulas, grid bounds, and selection rules are documented in:
+\begin{itemize}
+    \item Model implementation: \texttt{solver/rft\_v2\_gated\_tail.py}
+    \item Grid search: \texttt{scripts/grid\_search\_v2.1\_refine.py}
+    \item Metrics: \texttt{metrics/compute\_metrics.py}
+    \item Statistical tests: \texttt{analysis/fairness/compute\_paired\_stats.py}
+    \item Fairness pack (head-to-head + LSB/HSB): \texttt{scripts/generate\_fairness\_pack.py}
+    \item Stability perturbations: \texttt{scripts/generate\_stability\_analysis.py}
+    \item LaTeX macro emission: \texttt{scripts/emit\_tex\_numbers.py}
+\end{itemize}
+
+\subsection{Reproducibility and Provenance}
+
+\textbf{RUNME pipeline}: \texttt{RUNME.sh} verifies the solver build, regenerates fairness/stability JSON artifacts, emits \texttt{paper/build/numbers.tex}, and run-time checks the CI gates.  The GitHub Actions workflow enforces two guardrails on every commit: (i) the baseline lock via \texttt{scripts/audit\_baselines.py} and \texttt{scripts/verify\_final\_numbers\_hash.py} (expected SHA256 $=$ \texttt{d935dad7070d371578cdfacdaf6f6a62921ef5943ff8a0884e09c4b321c7bb1e}), and (ii) the numbers lock that fails if any section contains hard-coded decimal percentages.
+
+\textbf{Script-to-text traceability}: Figures and tables are regenerated through \texttt{paper/Makefile}, which delegates to the figure scripts (F1--F6) and \texttt{paper/tables/generate\_all\_tables.py}.  The linked JSON sources are frozen in \texttt{paper/build/final\_numbers.json}, \texttt{app/static/data/v2\_fairness\_pack.json}, \texttt{app/static/data/v2\_stability.json}, and \texttt{app/static/data/v2\_ablations.json}.  All of these artifacts are hashed in the release bundle (\texttt{rft-v2-repro-1.0.SHA256SUMS.txt}).
+
+\textbf{Availability}: The code and data are MIT-licensed and hosted at \url{https://github.com/rft-cosmology/rft-v2-galaxy-rotations}.  The frozen tag \texttt{\frozenTag} (commit \texttt{\frozenCommit}) is referenced throughout the paper and in the reproducibility pack.

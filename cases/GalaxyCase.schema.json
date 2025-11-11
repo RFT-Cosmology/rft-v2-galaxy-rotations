@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://rft.local/schemas/GalaxyCase.schema.json",
+  "title": "GalaxyCase",
+  "description": "Radial rotation-curve dataset derived from SPARC (kpc / km s^-1).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "r_kpc",
+    "v_obs_kms",
+    "sigma_v_kms",
+    "v_baryon_disk_kms",
+    "v_baryon_gas_kms"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the galaxy (e.g., 'NGC 2403')."
+    },
+    "distance_mpc": {
+      "type": "number",
+      "description": "Adopted distance in megaparsecs (optional)."
+    },
+    "inclination_deg": {
+      "type": "number",
+      "description": "Disk inclination in degrees (optional)."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-form notes about provenance or processing steps.",
+      "default": ""
+    },
+    "r_kpc": {
+      "type": "array",
+      "description": "Galactocentric radius samples in kiloparsecs (ascending).",
+      "minItems": 3,
+      "items": { "type": "number" }
+    },
+    "v_obs_kms": {
+      "type": "array",
+      "description": "Observed circular velocities (km s^-1).",
+      "minItems": 3,
+      "items": { "type": "number" }
+    },
+    "sigma_v_kms": {
+      "type": "array",
+      "description": "1σ observational uncertainties at each radius (km s^-1).",
+      "minItems": 3,
+      "items": { "type": "number" }
+    },
+    "v_baryon_disk_kms": {
+      "type": "array",
+      "description": "Quadrature contribution from the stellar disk (km s^-1).",
+      "minItems": 3,
+      "items": { "type": "number" }
+    },
+    "v_baryon_bulge_kms": {
+      "type": "array",
+      "description": "Quadrature contribution from the stellar bulge (km s^-1).",
+      "minItems": 3,
+      "items": { "type": "number" }
+    },
+    "v_baryon_gas_kms": {
+      "type": "array",
+      "description": "Quadrature contribution from the cold gas disk (km s^-1).",
+      "minItems": 3,
+      "items": { "type": "number" }
+    }
+  },
+  "examples": [
+    {
+      "name": "NGC 2403",
+      "distance_mpc": 3.2,
+      "inclination_deg": 63.0,
+      "notes": "Derived from SPARC Rotmod files (Lelli+2016)",
+      "r_kpc": [0.5, 1.0, 1.5],
+      "v_obs_kms": [45.0, 70.0, 90.0],
+      "sigma_v_kms": [3.0, 2.5, 2.0],
+      "v_baryon_disk_kms": [30.0, 60.0, 80.0],
+      "v_baryon_bulge_kms": [5.0, 5.0, 5.0],
+      "v_baryon_gas_kms": [10.0, 12.0, 15.0]
+    }
+  ],
+  "description_addendum": "All radial arrays must share the same length; enforcement handled in ingest code."
+}

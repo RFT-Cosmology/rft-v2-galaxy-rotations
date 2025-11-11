@@ -1,0 +1,81 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+      - 'rc-*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run verification
+        run: bash RUNME.sh
+
+      - name: Package release
+        run: |
+          mkdir -p dist
+          tar czf dist/rft-v2-repro-${{ github.ref_name }}.tar.gz \
+            --exclude='.git' \
+            --exclude='dist' \
+            --exclude='__pycache__' \
+            --exclude='*.pyc' \
+            .
+          cd dist
+          python3 -m zipfile -c rft-v2-repro-${{ github.ref_name }}.zip ../
+          sha256sum rft-v2-repro-${{ github.ref_name }}.* > SHA256SUMS.txt
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/rft-v2-repro-${{ github.ref_name }}.tar.gz
+            dist/rft-v2-repro-${{ github.ref_name }}.zip
+            dist/SHA256SUMS.txt
+          body: |
+            ## RFT v2 Galaxy Rotation Curves - Release ${{ github.ref_name }}
+
+            **Frozen config**: `rc-v2-green-20pct`
+            **Main result**: 58.8% pass@20% on TEST (20/34 galaxies, k=0)
+            **Baselines**: NFW_global 52.9%, MOND 23.5%
+            **Significance**: p=0.015 vs NFW, p=0.003 vs MOND
+
+            ### Quick Start
+            ```bash
+            tar xzf rft-v2-repro-${{ github.ref_name }}.tar.gz
+            cd rft-v2-repro-*/
+            ./RUNME.sh
+            ```
+
+            ### What's Included
+            - Frozen v2 solver code
+            - Baseline implementations (NFW, MOND)
+            - TRAIN/TEST manifests
+            - Pre-computed results
+            - Fairness pack & stability analysis
+            - Full provenance & citation info
+
+            ### Verification
+            See `SHA256SUMS.txt` for checksums.
+
+            **License**: MIT
+          draft: false
+          prerelease: false

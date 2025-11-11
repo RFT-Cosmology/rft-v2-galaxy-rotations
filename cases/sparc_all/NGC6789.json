@@ -1,0 +1,35 @@
+{
+  "distance_mpc": 3.52,
+  "name": "NGC6789",
+  "notes": "SPARC Rotmod ingest from NGC6789_rotmod.dat",
+  "r_kpc": [
+    0.1,
+    0.3,
+    0.51,
+    0.71
+  ],
+  "sigma_v_kms": [
+    3.84,
+    3.92,
+    4.1,
+    9.4
+  ],
+  "v_baryon_disk_kms": [
+    7.62,
+    17.26,
+    20.43,
+    21.37
+  ],
+  "v_baryon_gas_kms": [
+    2.8,
+    7.72,
+    11.07,
+    11.87
+  ],
+  "v_obs_kms": [
+    13.9,
+    29.9,
+    46.7,
+    60.4
+  ]
+}

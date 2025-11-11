@@ -1,0 +1,35 @@
+{
+  "distance_mpc": 30.9,
+  "name": "UGC00634",
+  "notes": "SPARC Rotmod ingest from UGC00634_rotmod.dat",
+  "r_kpc": [
+    4.51,
+    9.01,
+    13.51,
+    18.01
+  ],
+  "sigma_v_kms": [
+    4.15,
+    1.63,
+    0.99,
+    2.32
+  ],
+  "v_baryon_disk_kms": [
+    43.61,
+    40.02,
+    33.41,
+    28.28
+  ],
+  "v_baryon_gas_kms": [
+    19.36,
+    33.73,
+    39.28,
+    36.27
+  ],
+  "v_obs_kms": [
+    69.75,
+    97.7,
+    108.0,
+    107.5
+  ]
+}

@@ -1,0 +1,13 @@
+% Abstract for RFT v2 Galaxy Rotation Curves Paper
+
+\begin{abstract}
+
+Predictive models of galaxy rotation curves without per-galaxy dark matter tuning remain a key test for alternative gravity frameworks. We present RFT v2, a geometry-only resonance solver with six global parameters and zero per-galaxy tuning ($k=0$), evaluated on a blind TEST cohort of \testCohortSize\ SPARC-derived disk galaxies.
+
+RFT v2 achieves \textbf{\rftPassTwentyPct\ pass@20\%} (\rftPassTwentyFrac) compared to \nfwPassTwentyPct\ for the fair global NFW baseline and \mondPassTwentyPct\ for canonical MOND. Paired McNemar tests show that RFT is \textbf{competitive with NFW} ($p=\mcnemarPvsNFW$, overlapping Wilson intervals) and \textbf{significantly ahead of MOND} ($p=\mcnemarPvsMOND$). The predictive delta versus NFW is \rftVsNfwDeltaPP~percentage points, reinforcing the need for larger cohorts to establish significance.
+
+Beyond aggregate metrics, the fairness pack and robustness suite highlight the intended mechanisms. RFT is the only k=0 model with non-zero low-surface-brightness wins (Table~\ref{tab:lsbhsb}), consistent with the acceleration-gated tail activating where baryonic gravity is weak. ±10\% parameter sweeps leave the pass rate unchanged (Figure~\ref{fig:stability}), and ablations plus the rotation-curve gallery (Figures~\ref{fig:ablations} and~\ref{fig:gallery}) confirm that the tail term is the dominant causal lever while unveiling representative wins, ties, and failures.
+
+We release a complete reproducibility pack: \texttt{RUNME.sh}, CI gates that enforce both the baseline lock and the new numbers hash lock, frozen configs at tag \texttt{\frozenTag} (commit \texttt{\frozenCommit}), and the figures/tables generated in this paper. The result is a transparent, parameter-efficient benchmark that isolates what has been demonstrated on SPARC-99 and what still remains open.
+
+\end{abstract}

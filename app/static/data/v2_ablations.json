@@ -1,0 +1,51 @@
+{
+  "baseline": {
+    "label": "Baseline (all physics on)",
+    "pass_20_rate": 58.8235294117647,
+    "pass_20_count": 20,
+    "median_rms_pct": 17.569745032296986,
+    "n_cases": 34
+  },
+  "variants": [
+    {
+      "id": "no_tail",
+      "label": "No Tail (A\u2080 = 0)",
+      "pass_20_rate": 23.529411764705884,
+      "pass_20_count": 8,
+      "median_rms_pct": 32.283256916873015,
+      "delta_pp": -35.29411764705882
+    },
+    {
+      "id": "no_g_gate",
+      "label": "No Acceleration Gate",
+      "pass_20_rate": 50.0,
+      "pass_20_count": 17,
+      "median_rms_pct": 19.851111239189073,
+      "delta_pp": -8.823529411764703
+    },
+    {
+      "id": "no_r_gate",
+      "label": "No Radial Onset",
+      "pass_20_rate": 44.11764705882353,
+      "pass_20_count": 15,
+      "median_rms_pct": 21.33030215844726,
+      "delta_pp": -14.705882352941174
+    },
+    {
+      "id": "alpha1_const_v",
+      "label": "Alpha = 1.0 (Constant-V Tail)",
+      "pass_20_rate": 50.0,
+      "pass_20_count": 17,
+      "median_rms_pct": 20.03789597576862,
+      "delta_pp": -8.823529411764703
+    },
+    {
+      "id": "gate_soft",
+      "label": "Gate Softened (\u03b3 \u00d7 0.75)",
+      "pass_20_rate": 58.8235294117647,
+      "pass_20_count": 20,
+      "median_rms_pct": 18.115426837891665,
+      "delta_pp": 0.0
+    }
+  ]
+}

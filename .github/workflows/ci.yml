@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run baseline lock (Gate 0)
+        run: python scripts/audit_baselines.py
+
+      - name: Verify final numbers hash (Gate P1)
+        run: python scripts/verify_final_numbers_hash.py
+
+      - name: Emit LaTeX numbers
+        run: python scripts/emit_tex_numbers.py
+
+      - name: Verify headline numbers
+        run: python scripts/verify_numbers.py
+
+      - name: Check for hard-coded percentages in LaTeX
+        run: |
+          if grep -R -n --include='*.tex' -E '[0-9]+\.[0-9]+\\%' paper/main.tex paper/sections; then
+            echo "❌ Found manual percentage values. Use macros from build/numbers.tex."
+            exit 1
+          fi
+          echo "✅ No manual percentages detected in LaTeX sources"
+
+      - name: Generate fairness pack
+        run: |
+          python scripts/generate_fairness_pack.py \
+            --rft results/v2.1_refine/v2.1_test_results.json \
+            --nfw baselines/results/nfw_global_test_baseline.json \
+            --mond baselines/results/mond_test_baseline.json \
+            --out app/static/data/v2_fairness_pack.json
+
+      - name: Generate stability analysis
+        run: |
+          python scripts/generate_stability_analysis.py \
+            --frozen-config config/global_rc_v2_frozen.json \
+            --out app/static/data/v2_stability.json
+
+      - name: Check generated files exist
+        run: |
+          test -f app/static/data/v2_fairness_pack.json
+          test -f app/static/data/v2_stability.json
+          echo "✅ All generated files present"
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install ruff
+      - run: ruff check scripts/ || true  # Allow warnings for now

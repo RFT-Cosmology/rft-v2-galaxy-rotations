@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "date": "2025-11-10",
+    "commit": "3428db0f",
+    "tag": "rc-v2-green-20pct",
+    "cohort": "SPARC-99 TEST",
+    "n_galaxies": 34
+  },
+  "aggregate": {
+    "rft_v2": {
+      "pass_count": 20,
+      "pass_rate": 58.8235294117647,
+      "wilson_ci": [
+        0.42221304146519273,
+        0.7363426221431113
+      ]
+    },
+    "nfw_global": {
+      "pass_count": 18,
+      "pass_rate": 52.94117647058823,
+      "wilson_ci": [
+        0.3673644042005483,
+        0.6854874836688863
+      ]
+    },
+    "mond": {
+      "pass_count": 8,
+      "pass_rate": 23.529411764705884,
+      "wilson_ci": [
+        0.12436838109244344,
+        0.3999646280826443
+      ]
+    }
+  },
+  "paired_tests": {
+    "rft_vs_nfw": {
+      "mcnemar_p": 0.6875,
+      "contingency": {
+        "both_pass": 16,
+        "rft_only": 4,
+        "competitor_only": 2,
+        "both_fail": 12
+      },
+      "head_to_head": {
+        "rft_wins": 4,
+        "competitor_wins": 2,
+        "both_pass": 16,
+        "both_fail": 12
+      }
+    },
+    "rft_vs_mond": {
+      "mcnemar_p": 0.004180908203125,
+      "contingency": {
+        "both_pass": 6,
+        "rft_only": 14,
+        "competitor_only": 2,
+        "both_fail": 12
+      },
+      "head_to_head": {
+        "rft_wins": 14,
+        "competitor_wins": 2,
+        "both_pass": 6,
+        "both_fail": 12
+      }
+    }
+  },
+  "unpaired_tests": {
+    "rft_vs_nfw": {
+      "z": 0.4884633980433644,
+      "p_value": 0.625221645418211
+    },
+    "rft_vs_mond": {
+      "z": 2.9568322818274875,
+      "p_value": 0.0031081713287210736
+    }
+  }
+}

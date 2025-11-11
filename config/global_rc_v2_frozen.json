@@ -1,0 +1,31 @@
+{
+  "kernel": {
+    "grid": [0.0],
+    "weights": [1.0],
+    "r_scale": "r_geo",
+    "comment": "Identity kernel - no convolution"
+  },
+  "tail": {
+    "A0_kms2_per_kpc": 1000,
+    "alpha": 0.6,
+    "g_star_kms2_per_kpc": 1000,
+    "gamma": 0.5,
+    "r_turn_kpc": 2.0,
+    "p": 2.0,
+    "comment": "Best calibrated config: 58.5% TRAIN, 58.8% TEST pass@20%"
+  },
+  "performance": {
+    "train_pass_rate": 58.5,
+    "test_pass_rate": 58.8,
+    "train_rms_median": 18.7,
+    "test_rms_median": 17.6,
+    "gate_status": "GREEN"
+  },
+  "provenance": {
+    "grid": "v2_calibrated",
+    "date": "2025-11-10",
+    "config_id": 4,
+    "train_manifest": "cases/SP99-TRAIN.manifest.txt",
+    "test_manifest": "cases/SP99-TEST.manifest.txt"
+  }
+}

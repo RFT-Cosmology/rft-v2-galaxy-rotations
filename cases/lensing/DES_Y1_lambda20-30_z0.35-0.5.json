@@ -1,0 +1,65 @@
+{
+  "name": "DES_Y1_lambda20-30_z0.35-0.5",
+  "meta": {
+    "survey": "DES_Y1_redMaPPer",
+    "data_source": "McClintock et al. 2019, MNRAS 482, 1352 (DES Y1 redMaPPer stacks)",
+    "richness_range": [
+      20,
+      30
+    ],
+    "is_stacked": true,
+    "stack_description": "Stacked profile for richness \u03bb=20-30, z=0.42",
+    "units": {
+      "R": "kpc",
+      "DeltaSigma": "Msun_per_pc2",
+      "sigma": "Msun_per_pc2"
+    },
+    "cosmo_input": {
+      "H0": 70.0,
+      "Omega_m": 0.3,
+      "Omega_Lambda": 0.7,
+      "note": "DES Y1 cosmology (Planck-like)"
+    },
+    "approx_mass_1e14": 5.5
+  },
+  "lens": {
+    "z": 0.425,
+    "name": "DES_Y1_lambda20-30_z0.35-0.5"
+  },
+  "sources": {
+    "z_eff": 0.75,
+    "description": "Effective source redshift for DES Y1 lensing catalog"
+  },
+  "profile": [
+    {
+      "R_kpc": 200.0,
+      "DeltaSigma_Msun_pc2": 780.0,
+      "DeltaSigma_err_Msun_pc2": 115.0
+    },
+    {
+      "R_kpc": 350.0,
+      "DeltaSigma_Msun_pc2": 665.0,
+      "DeltaSigma_err_Msun_pc2": 80.0
+    },
+    {
+      "R_kpc": 550.0,
+      "DeltaSigma_Msun_pc2": 535.0,
+      "DeltaSigma_err_Msun_pc2": 60.0
+    },
+    {
+      "R_kpc": 800.0,
+      "DeltaSigma_Msun_pc2": 415.0,
+      "DeltaSigma_err_Msun_pc2": 48.0
+    },
+    {
+      "R_kpc": 1200.0,
+      "DeltaSigma_Msun_pc2": 295.0,
+      "DeltaSigma_err_Msun_pc2": 38.0
+    },
+    {
+      "R_kpc": 1800.0,
+      "DeltaSigma_Msun_pc2": 195.0,
+      "DeltaSigma_err_Msun_pc2": 33.0
+    }
+  ]
+}

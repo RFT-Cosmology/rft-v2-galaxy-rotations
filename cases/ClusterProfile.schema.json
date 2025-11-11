@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ClusterProfile",
+  "description": "Schema for cluster weak lensing shear profiles with metadata",
+  "type": "object",
+  "required": ["name", "redshift", "cosmology", "profile"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Cluster identifier (e.g., 'Abell_1689', 'MACS_J1149')"
+    },
+    "redshift": {
+      "type": "number",
+      "description": "Cluster redshift z_lens",
+      "minimum": 0.0
+    },
+    "source_redshift": {
+      "type": "number",
+      "description": "Mean source redshift z_s (if available, otherwise computed from distribution)",
+      "minimum": 0.0
+    },
+    "cosmology": {
+      "type": "object",
+      "description": "Cosmological parameters for critical surface density",
+      "required": ["H0", "Om0"],
+      "properties": {
+        "H0": {
+          "type": "number",
+          "description": "Hubble constant [km/s/Mpc]",
+          "minimum": 0.0
+        },
+        "Om0": {
+          "type": "number",
+          "description": "Matter density parameter Ω_m",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "Ode0": {
+          "type": "number",
+          "description": "Dark energy density parameter Ω_Λ (default: 1 - Om0)",
+          "minimum": 0.0,
+          "maximum": 1.0
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional observational metadata",
+      "properties": {
+        "survey": {"type": "string", "description": "Survey name (e.g., 'HST', 'CLASH', 'WtG')"},
+        "mass_M200": {"type": "number", "description": "Virial mass M200 [10^14 Msun] (for reference)"},
+        "richness": {"type": "number", "description": "Galaxy richness (if available)"},
+        "reference": {"type": "string", "description": "Paper/data source"}
+      }
+    },
+    "profile": {
+      "type": "object",
+      "description": "Radial profile measurements",
+      "required": ["R_kpc", "DeltaSigma_Msun_pc2"],
+      "properties": {
+        "R_kpc": {
+          "type": "array",
+          "description": "Projected radial bins [kpc physical at z_lens]",
+          "items": {"type": "number", "minimum": 0.0},
+          "minItems": 3
+        },
+        "DeltaSigma_Msun_pc2": {
+          "type": "array",
+          "description": "Excess surface density ΔΣ(R) [Msun/pc^2]",
+          "items": {"type": "number"}
+        },
+        "DeltaSigma_err_Msun_pc2": {
+          "type": "array",
+          "description": "1σ uncertainties on ΔΣ(R) [Msun/pc^2]",
+          "items": {"type": "number", "minimum": 0.0}
+        },
+        "gamma_t": {
+          "type": "array",
+          "description": "Tangential shear γ_t(R) (alternative to ΔΣ)",
+          "items": {"type": "number"}
+        },
+        "gamma_t_err": {
+          "type": "array",
+          "description": "1σ uncertainties on γ_t(R)",
+          "items": {"type": "number", "minimum": 0.0}
+        },
+        "Sigma_crit_Msun_pc2": {
+          "type": "number",
+          "description": "Critical surface density Σ_crit [Msun/pc^2] (if precomputed)",
+          "minimum": 0.0
+        }
+      }
+    }
+  }
+}

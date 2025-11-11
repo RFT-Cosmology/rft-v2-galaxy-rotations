@@ -1,0 +1,256 @@
+{
+  "model": "NFW_global",
+  "description": "Global NFW with zero per-galaxy tuning (k=0)",
+  "timestamp": "2025-11-10T10:40:30.051121",
+  "global_params": {
+    "rho_s_Msun_per_kpc3": 1000000.0,
+    "r_s_kpc": 29.76351441631318
+  },
+  "cohort": "TEST",
+  "n_galaxies": 34,
+  "pass_20_count": 18,
+  "pass_20_rate": 52.94117647058823,
+  "pass_10_count": 4,
+  "pass_10_rate": 11.764705882352942,
+  "rms_median": 18.26873604719524,
+  "per_galaxy": [
+    {
+      "name": "UGC05721",
+      "n_points": 17,
+      "rms_percent": 24.099069369807864,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "F568-V1",
+      "n_points": 14,
+      "rms_percent": 25.649639763214967,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "UGC05986",
+      "n_points": 14,
+      "rms_percent": 15.910176080720523,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "UGC06787",
+      "n_points": 59,
+      "rms_percent": 20.450934256192223,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "UGC08699",
+      "n_points": 37,
+      "rms_percent": 11.795394865473844,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "UGC12506",
+      "n_points": 17,
+      "rms_percent": 24.15418777938441,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "UGC06786",
+      "n_points": 39,
+      "rms_percent": 15.428166597180887,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "UGC05253",
+      "n_points": 59,
+      "rms_percent": 16.10261750539111,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "DDO154",
+      "n_points": 10,
+      "rms_percent": 25.093815383276638,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "UGC04278",
+      "n_points": 21,
+      "rms_percent": 13.928695173491533,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "UGC06446",
+      "n_points": 16,
+      "rms_percent": 12.873468094610246,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "UGC00128",
+      "n_points": 12,
+      "rms_percent": 15.126920835647123,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "F583-1",
+      "n_points": 21,
+      "rms_percent": 14.652940422503251,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "UGC03546",
+      "n_points": 27,
+      "rms_percent": 28.166824497647347,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "UGC05716",
+      "n_points": 12,
+      "rms_percent": 7.903154715144225,
+      "pass_20": true,
+      "pass_10": true
+    },
+    {
+      "name": "F579-V1",
+      "n_points": 13,
+      "rms_percent": 19.120932605391875,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "ESO563-G021",
+      "n_points": 21,
+      "rms_percent": 33.89134332793308,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "NGC4183",
+      "n_points": 22,
+      "rms_percent": 4.109737974303214,
+      "pass_20": true,
+      "pass_10": true
+    },
+    {
+      "name": "NGC5371",
+      "n_points": 13,
+      "rms_percent": 22.208392706924062,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "NGC4010",
+      "n_points": 11,
+      "rms_percent": 20.2665019420195,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "NGC0300",
+      "n_points": 24,
+      "rms_percent": 6.954721690590267,
+      "pass_20": true,
+      "pass_10": true
+    },
+    {
+      "name": "NGC4088",
+      "n_points": 12,
+      "rms_percent": 38.993792948062385,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "NGC5005",
+      "n_points": 16,
+      "rms_percent": 24.334249402348625,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "NGC2403",
+      "n_points": 64,
+      "rms_percent": 13.818504904408208,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "NGC2841",
+      "n_points": 33,
+      "rms_percent": 12.866058477563191,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "NGC3198",
+      "n_points": 32,
+      "rms_percent": 13.90288268871242,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "NGC2366",
+      "n_points": 22,
+      "rms_percent": 27.35013926089956,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "IC2574",
+      "n_points": 33,
+      "rms_percent": 60.73373842581719,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "NGC6946",
+      "n_points": 55,
+      "rms_percent": 17.416539488998605,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "NGC4559",
+      "n_points": 31,
+      "rms_percent": 14.829480722318927,
+      "pass_20": true,
+      "pass_10": false
+    },
+    {
+      "name": "NGC3877",
+      "n_points": 12,
+      "rms_percent": 23.461017841156306,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "NGC0247",
+      "n_points": 26,
+      "rms_percent": 4.188381370157724,
+      "pass_20": true,
+      "pass_10": true
+    },
+    {
+      "name": "NGC5055",
+      "n_points": 18,
+      "rms_percent": 34.864428637040184,
+      "pass_20": false,
+      "pass_10": false
+    },
+    {
+      "name": "KK98-251",
+      "n_points": 10,
+      "rms_percent": 55.96989219125929,
+      "pass_20": false,
+      "pass_10": false
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "baseline": {
+    "pass_20_count": 20,
+    "pass_20_rate": 58.8235294117647,
+    "median_rms_pct": 17.09956240844364,
+    "n_galaxies": 34
+  },
+  "perturbations": [
+    {
+      "param": "A0_kms2_per_kpc",
+      "delta": "-10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 18.01391704290067
+    },
+    {
+      "param": "A0_kms2_per_kpc",
+      "delta": "+10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.346427780340857
+    },
+    {
+      "param": "alpha",
+      "delta": "-10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.38707698138682
+    },
+    {
+      "param": "alpha",
+      "delta": "+10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.75930508968201
+    },
+    {
+      "param": "g_star_kms2_per_kpc",
+      "delta": "-10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.833911681307228
+    },
+    {
+      "param": "g_star_kms2_per_kpc",
+      "delta": "+10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.336193469976628
+    },
+    {
+      "param": "gamma",
+      "delta": "-10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.800975575167143
+    },
+    {
+      "param": "gamma",
+      "delta": "+10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.35068907342447
+    },
+    {
+      "param": "r_turn_kpc",
+      "delta": "-10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.191955412808106
+    },
+    {
+      "param": "r_turn_kpc",
+      "delta": "+10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.779916370392442
+    },
+    {
+      "param": "p",
+      "delta": "-10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.559058012004368
+    },
+    {
+      "param": "p",
+      "delta": "+10%",
+      "pass_20_count": 20,
+      "pass_20_rate": 58.8235294117647,
+      "median_rms_pct": 17.59288187274398
+    }
+  ]
+}

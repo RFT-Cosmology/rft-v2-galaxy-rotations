@@ -1,0 +1,5 @@
+sparc_all/F571-8.json
+sparc_all/UGC02916.json
+sparc_all/UGC05750.json
+sparc_all/UGC08286.json
+sparc_all/F568-1.json

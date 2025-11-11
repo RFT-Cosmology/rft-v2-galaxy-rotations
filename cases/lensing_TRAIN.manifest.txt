@@ -1,0 +1,8 @@
+cases/lensing/DES_Y1_lambda20-30_z0.2-0.35.json
+cases/lensing/DES_Y1_lambda20-30_z0.35-0.5.json
+cases/lensing/DES_Y1_lambda30-45_z0.2-0.35.json
+cases/lensing/DES_Y1_lambda30-45_z0.35-0.5.json
+cases/lensing/DES_Y1_lambda45-60_z0.2-0.35.json
+cases/lensing/DES_Y1_lambda45-60_z0.35-0.5.json
+cases/lensing/DES_Y1_lambda60plus_z0.2-0.35.json
+cases/lensing/DES_Y1_lambda60plus_z0.35-0.5.json

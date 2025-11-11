@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "RFT v2 Galaxy Rotation Curves: Reproducibility Package"
+version: "1.0"
+date-released: "2025-11-10"
+url: "https://rft-cosmology.com/downloads/rft-v2-repro-1.0"
+repository-code: "https://github.com/rft-cosmology/rft-rc-v2"
+license: MIT
+authors:
+  - family-names: "RFT Cosmology Project"
+    name: "RFT Cosmology Project"
+    email: "research@rft-cosmology.com"
+    website: "https://rft-cosmology.com"
+keywords:
+  - cosmology
+  - galaxy-rotation-curves
+  - dark-matter
+  - modified-gravity
+  - SPARC
+  - reproducibility
+abstract: |
+  Reproducibility package for RFT v2 galaxy rotation curve analysis.
+  Includes frozen solver code, baseline implementations (NFW, MOND),
+  TRAIN/TEST manifests, pre-computed results, fairness analysis, and
+  stability validation. Achieves 58.8% pass@20% on blind TEST cohort
+  with statistical significance over fair baselines (p<0.05).
+references:
+  - type: article
+    title: "SPARC: Mass Models for 175 Disk Galaxies with Spitzer Photometry and Accurate Rotation Curves"
+    authors:
+      - family-names: "Lelli"
+        given-names: "F."
+      - family-names: "McGaugh"
+        given-names: "S. S."
+      - family-names: "Schombert"
+        given-names: "J. M."
+    journal: "The Astronomical Journal"
+    volume: 152
+    issue: 6
+    pages: 157
+    year: 2016
+    doi: "10.3847/0004-6256/152/6/157"

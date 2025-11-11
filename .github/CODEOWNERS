@@ -1,0 +1,17 @@
+# This file defines code owners for the RFT v2 galaxy rotations repository
+# Code owners are automatically requested for review when someone opens a pull request
+
+# Default owners for everything
+*       @rft-cosmology/core-team
+
+# CI and workflows
+/.github/workflows/     @rft-cosmology/core-team
+
+# Analysis and scripts
+/analysis/      @rft-cosmology/core-team
+/scripts/       @rft-cosmology/core-team
+
+# Paper and documentation
+/paper/         @rft-cosmology/core-team
+README.md       @rft-cosmology/core-team
+CITATION.cff    @rft-cosmology/core-team

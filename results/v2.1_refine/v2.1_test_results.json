@@ -1,0 +1,332 @@
+{
+  "phase": "TEST",
+  "config_id": "v2.1_003",
+  "tail_config": {
+    "id": "v2.1_003",
+    "A0_kms2_per_kpc": 1000,
+    "alpha": 0.5,
+    "g_star_kms2_per_kpc": 1000,
+    "gamma": 0.5,
+    "r_turn_kpc": 1.7,
+    "p": 1.5,
+    "description": "p=1.5, \u03b1=0.5, A0=1000, rturn=1.7"
+  },
+  "gate": "GREEN",
+  "timestamp": "2025-11-10T10:23:46.350331",
+  "n_galaxies": 34,
+  "pass_20_count": 20,
+  "pass_20_rate": 58.8235294117647,
+  "pass_10_count": 3,
+  "pass_10_rate": 8.823529411764707,
+  "rms_median": 17.09956240844364,
+  "bic_median": 121.80132958306658,
+  "bic_sum": 5792.137797443519,
+  "per_galaxy": [
+    {
+      "name": "UGC05721",
+      "n_points": 17,
+      "rms_percent": 34.04319119141981,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 129.23632742631855,
+      "rss": 12523.881250462877
+    },
+    {
+      "name": "F568-V1",
+      "n_points": 14,
+      "rms_percent": 28.871527979088263,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 110.8345419841501,
+      "rss": 12391.74443685913
+    },
+    {
+      "name": "UGC05986",
+      "n_points": 14,
+      "rms_percent": 21.027579943188854,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 104.05879076717211,
+      "rss": 7637.3314069812695
+    },
+    {
+      "name": "UGC06787",
+      "n_points": 59,
+      "rms_percent": 21.59515521308763,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 489.88468518383115,
+      "rss": 157314.59613650735
+    },
+    {
+      "name": "UGC08699",
+      "n_points": 37,
+      "rms_percent": 13.71100630825202,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 261.5416636219827,
+      "rss": 24198.77444139195
+    },
+    {
+      "name": "UGC12506",
+      "n_points": 17,
+      "rms_percent": 23.23210305330343,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 150.4541915819387,
+      "rss": 43630.086856013404
+    },
+    {
+      "name": "UGC06786",
+      "n_points": 39,
+      "rms_percent": 17.21119778811951,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 306.1115858758055,
+      "rss": 56894.377410510846
+    },
+    {
+      "name": "UGC05253",
+      "n_points": 59,
+      "rms_percent": 15.52527336875877,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 453.92706049146335,
+      "rss": 85523.93955102639
+    },
+    {
+      "name": "DDO154",
+      "n_points": 10,
+      "rms_percent": 16.871401299375062,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 54.113538332857324,
+      "rss": 562.4981642306816
+    },
+    {
+      "name": "UGC04278",
+      "n_points": 21,
+      "rms_percent": 15.166836037477555,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 124.18342548946183,
+      "rss": 3255.6763984807058
+    },
+    {
+      "name": "UGC06446",
+      "n_points": 16,
+      "rms_percent": 16.3362421651724,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 94.03610543535099,
+      "rss": 2018.5294719628678
+    },
+    {
+      "name": "UGC00128",
+      "n_points": 12,
+      "rms_percent": 12.916038593631574,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 68.52784523331073,
+      "rss": 1046.3959333141302
+    },
+    {
+      "name": "F583-1",
+      "n_points": 21,
+      "rms_percent": 11.668188516462616,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 98.35002380642486,
+      "rss": 951.4559126262434
+    },
+    {
+      "name": "UGC03546",
+      "n_points": 27,
+      "rms_percent": 27.926763195552734,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 241.97186671511616,
+      "rss": 101250.16990157952
+    },
+    {
+      "name": "UGC05716",
+      "n_points": 12,
+      "rms_percent": 10.260921175340625,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 60.51588452718183,
+      "rss": 536.7023738166672
+    },
+    {
+      "name": "F579-V1",
+      "n_points": 13,
+      "rms_percent": 22.649184544085823,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 95.94768900167387,
+      "rss": 6385.071961240716
+    },
+    {
+      "name": "ESO563-G021",
+      "n_points": 21,
+      "rms_percent": 33.72905344622292,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 168.2304730308423,
+      "rss": 26519.452262078932
+    },
+    {
+      "name": "NGC4183",
+      "n_points": 22,
+      "rms_percent": 4.3756396773343,
+      "pass_20": true,
+      "pass_10": true,
+      "bic": 80.38618274216253,
+      "rss": 365.7493535888249
+    },
+    {
+      "name": "NGC5371",
+      "n_points": 13,
+      "rms_percent": 21.501251291240774,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 117.107642369767,
+      "rss": 32513.37296023456
+    },
+    {
+      "name": "NGC4010",
+      "n_points": 11,
+      "rms_percent": 18.104839864469117,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 72.07797564811253,
+      "rss": 2084.940585083483
+    },
+    {
+      "name": "NGC0300",
+      "n_points": 24,
+      "rms_percent": 9.105010466411091,
+      "pass_20": true,
+      "pass_10": true,
+      "bic": 119.41923367667131,
+      "rss": 1570.8022827694954
+    },
+    {
+      "name": "NGC4088",
+      "n_points": 12,
+      "rms_percent": 38.166554884275065,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 112.26640289456591,
+      "rss": 40054.12323736711
+    },
+    {
+      "name": "NGC5005",
+      "n_points": 16,
+      "rms_percent": 23.578282665638667,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 146.93361824147843,
+      "rss": 55062.21966726967
+    },
+    {
+      "name": "NGC2403",
+      "n_points": 64,
+      "rms_percent": 16.987927028767768,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 420.2982458504178,
+      "rss": 30827.05170860761
+    },
+    {
+      "name": "NGC2841",
+      "n_points": 33,
+      "rms_percent": 13.373490376589249,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 265.60900833782597,
+      "rss": 54695.501325301804
+    },
+    {
+      "name": "NGC3198",
+      "n_points": 32,
+      "rms_percent": 12.484836284305885,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 180.20241208632888,
+      "rss": 4662.167737706899
+    },
+    {
+      "name": "NGC2366",
+      "n_points": 22,
+      "rms_percent": 12.607425871263612,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 91.78250141265252,
+      "rss": 613.9802475790495
+    },
+    {
+      "name": "IC2574",
+      "n_points": 33,
+      "rms_percent": 61.746827909948166,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 218.01026221681653,
+      "rss": 12927.996321907181
+    },
+    {
+      "name": "NGC6946",
+      "n_points": 55,
+      "rms_percent": 15.543550869760299,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 375.2386006857126,
+      "rss": 32620.28383822114
+    },
+    {
+      "name": "NGC4559",
+      "n_points": 31,
+      "rms_percent": 12.860954599406554,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 175.61443418252162,
+      "rss": 4602.368160800271
+    },
+    {
+      "name": "NGC3877",
+      "n_points": 12,
+      "rms_percent": 21.075173890244884,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 95.38321081212229,
+      "rss": 9808.986417878234
+    },
+    {
+      "name": "NGC0247",
+      "n_points": 26,
+      "rms_percent": 4.809992984566912,
+      "pass_20": true,
+      "pass_10": true,
+      "bic": 95.73557348140335,
+      "rss": 487.0493963242266
+    },
+    {
+      "name": "NGC5055",
+      "n_points": 18,
+      "rms_percent": 34.01348539293153,
+      "pass_20": false,
+      "pass_10": false,
+      "bic": 167.79236644392256,
+      "rss": 76781.01138989028
+    },
+    {
+      "name": "KK98-251",
+      "n_points": 10,
+      "rms_percent": 19.875119855940177,
+      "pass_20": true,
+      "pass_10": false,
+      "bic": 46.35442785615548,
+      "rss": 258.90904510281325
+    }
+  ]
+}

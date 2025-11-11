@@ -1,0 +1,10 @@
+cases/lensing/MockCL_A001.json
+cases/lensing/MockCL_A002.json
+cases/lensing/MockCL_B001.json
+cases/lensing/MockCL_B002.json
+cases/lensing/MockCL_C001.json
+cases/lensing/MockCL_C002.json
+cases/lensing/MockCL_C003.json
+cases/lensing/MockCL_D001.json
+cases/lensing/MockCL_D002.json
+cases/lensing/MockCL_D003.json

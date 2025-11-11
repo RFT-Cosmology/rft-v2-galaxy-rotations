@@ -1,0 +1,92 @@
+{
+  "name": "MockCL_B002",
+  "meta": {
+    "survey": "MOCK",
+    "data_source": "Mock data for pilot testing",
+    "units": {
+      "R": "kpc",
+      "DeltaSigma": "Msun_per_pc2",
+      "sigma": "Msun_per_pc2"
+    },
+    "cosmo_input": {
+      "H0": 70.0,
+      "Omega_m": 0.3,
+      "Omega_Lambda": 0.7
+    },
+    "true_params": {
+      "M200_1e14": 15.0,
+      "c": 3.5,
+      "comment": "True NFW parameters used for mock generation"
+    }
+  },
+  "lens": {
+    "z": 0.28,
+    "name": "MockCL_B002"
+  },
+  "sources": {
+    "z_eff": 0.85,
+    "description": "Effective source redshift"
+  },
+  "profile": [
+    {
+      "R_kpc": 100.0,
+      "DeltaSigma_Msun_pc2": 60110160620.88357,
+      "DeltaSigma_err_Msun_pc2": 6918831628.550036
+    },
+    {
+      "R_kpc": 131.30324344878838,
+      "DeltaSigma_Msun_pc2": 32346326269.0486,
+      "DeltaSigma_err_Msun_pc2": 3520407242.4482074
+    },
+    {
+      "R_kpc": 172.40541740171787,
+      "DeltaSigma_Msun_pc2": 16561908753.689655,
+      "DeltaSigma_err_Msun_pc2": 1756404380.5498524
+    },
+    {
+      "R_kpc": 226.37390492987734,
+      "DeltaSigma_Msun_pc2": 6523900188.996942,
+      "DeltaSigma_err_Msun_pc2": 852946554.1594901
+    },
+    {
+      "R_kpc": 297.2362794946059,
+      "DeltaSigma_Msun_pc2": 3611355711.347735,
+      "DeltaSigma_err_Msun_pc2": 398185867.808115
+    },
+    {
+      "R_kpc": 390.2808756829234,
+      "DeltaSigma_Msun_pc2": 1630225829.966421,
+      "DeltaSigma_err_Msun_pc2": 174552480.00551918
+    },
+    {
+      "R_kpc": 512.451448332012,
+      "DeltaSigma_Msun_pc2": 564057457.7990057,
+      "DeltaSigma_err_Msun_pc2": 68124978.40287815
+    },
+    {
+      "R_kpc": 672.8653727602236,
+      "DeltaSigma_Msun_pc2": 136762496.6444452,
+      "DeltaSigma_err_Msun_pc2": 19909752.165196937
+    },
+    {
+      "R_kpc": 883.4940584779547,
+      "DeltaSigma_Msun_pc2": -1581397.8254638794,
+      "DeltaSigma_err_Msun_pc2": -208279.23864522445
+    },
+    {
+      "R_kpc": 1160.0563544588897,
+      "DeltaSigma_Msun_pc2": -45480467.23380151,
+      "DeltaSigma_err_Msun_pc2": -7311341.669788746
+    },
+    {
+      "R_kpc": 1523.191619238295,
+      "DeltaSigma_Msun_pc2": -46746320.376931384,
+      "DeltaSigma_err_Msun_pc2": -8758661.208062073
+    },
+    {
+      "R_kpc": 2000.0000000000002,
+      "DeltaSigma_Msun_pc2": -37497333.67940784,
+      "DeltaSigma_err_Msun_pc2": -8012749.604268274
+    }
+  ]
+}
