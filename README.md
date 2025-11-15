@@ -11,6 +11,26 @@
 
 ---
 
+## 🔍 For Auditors: Independent Verification
+
+**Want to verify our claims independently?** We provide a single-script auditor:
+
+```bash
+python3 audit/audit_all.py
+```
+
+This comprehensive auditor:
+- ✅ Verifies all core claims (58.8%, 52.9%, 23.5%)
+- ✅ Validates statistical tests (z-tests, p-values, Wilson CIs)
+- ✅ Checks data integrity (TRAIN/TEST splits, parameter counts)
+- ✅ Detects red flags (data leakage, p-hacking)
+- ✅ Generates detailed audit report
+
+**No dependencies required** - pure Python 3.7+ only!
+**See [`audit/README.md`](audit/README.md) for complete documentation.**
+
+---
+
 ## Quick Start (One Command)
 
 ```bash

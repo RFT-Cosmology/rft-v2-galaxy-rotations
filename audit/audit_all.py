@@ -203,6 +203,38 @@ class AuditReport:
         report.append("")
         report.append("=" * 70)
 
+        # Add compact summary for quick eyeballing
+        report.append("")
+        report.append("QUICK SUMMARY (for eyeball verification):")
+        report.append("-" * 70)
+
+        # Extract pass counts from claims results
+        rft_claim = next((r for r in self.results['claims'] if 'RFT v2' in r['item']), None)
+        nfw_claim = next((r for r in self.results['claims'] if 'NFW (global)' in r['item']), None)
+        mond_claim = next((r for r in self.results['claims'] if 'MOND' in r['item']), None)
+
+        if rft_claim:
+            report.append(f"  RFT v2:      {rft_claim['details']}")
+        if nfw_claim:
+            report.append(f"  NFW_global:  {nfw_claim['details']}")
+        if mond_claim:
+            report.append(f"  MOND:        {mond_claim['details']}")
+
+        # Extract statistical test p-values
+        rft_nfw_stat = next((r for r in self.results['statistics'] if 'RFT vs NFW' in r['item']), None)
+        rft_mond_stat = next((r for r in self.results['statistics'] if 'RFT vs MOND' in r['item']), None)
+
+        if rft_nfw_stat or rft_mond_stat:
+            report.append("")
+            report.append("  Statistical comparisons:")
+        if rft_nfw_stat:
+            report.append(f"    RFT vs NFW:  {rft_nfw_stat['details']}")
+        if rft_mond_stat:
+            report.append(f"    RFT vs MOND: {rft_mond_stat['details']}")
+
+        report.append("")
+        report.append("=" * 70)
+
         return "\n".join(report)
 
 
